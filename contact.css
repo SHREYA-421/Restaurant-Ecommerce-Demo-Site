@@ -1,15 +1,18 @@
+/* Navigation Header Bar */
 .contact-header-nav {
   position: relative;
   background: var(--bg-card);
   border-bottom: 1px solid var(--border);
 }
 
+/* Contact Container Layout */
 .contact-container {
   max-width: 960px;
   margin: 50px auto 90px;
   padding: 0 24px;
 }
 
+/* Contact Title Header */
 .contact-header {
   text-align: center;
   margin-bottom: 50px;
@@ -30,12 +33,14 @@
   line-height: 1.7;
 }
 
+/* Contact Section Grid Layout */
 .contact-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 32px;
 }
 
+/* Contact Form Card */
 .contact-form-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -51,6 +56,7 @@
   letter-spacing: 0.06em;
 }
 
+/* Form Controls & Inputs */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -95,6 +101,7 @@
   box-shadow: 0 0 10px rgba(201, 162, 39, 0.2);
 }
 
+/* Submit Form Button */
 .contact-submit-btn {
   width: 100%;
   padding: 16px;
@@ -118,6 +125,7 @@
   box-shadow: 0 8px 20px rgba(201, 162, 39, 0.3);
 }
 
+/* Contact Information Side Panel */
 .contact-info-panel {
   display: flex;
   flex-direction: column;

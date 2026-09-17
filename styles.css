@@ -89,6 +89,7 @@ img {
   letter-spacing: 0.08em;
 }
 
+/* Buttons & Call to Actions */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -116,7 +117,7 @@ img {
   box-shadow: 0 8px 20px rgba(201, 162, 39, 0.3);
 }
 
-/* Hero & Navigation Section */
+/* Hero Section & Background */
 .hero-viewport {
   position: relative;
   min-height: 100vh;
@@ -129,6 +130,7 @@ img {
     url('images/hero_dish.jpg') center right / cover no-repeat;
 }
 
+/* Navbar & Overlay Container */
 .navbar-overlay {
   width: 100%;
   background: linear-gradient(to bottom, rgba(23, 23, 23, 0.9), transparent);
@@ -142,6 +144,7 @@ img {
   width: 100%;
 }
 
+/* Navbar Links & Menu List */
 .nav-menu-list {
   display: flex;
   align-items: center;
@@ -163,6 +166,7 @@ img {
   color: var(--gold);
 }
 
+/* Brand Logo & Title */
 .brand-center {
   text-align: center;
 }
@@ -184,6 +188,7 @@ img {
   font-weight: 700;
 }
 
+/* Hero Main Text Box */
 .hero-main-content {
   flex-grow: 1;
   display: flex;
@@ -230,7 +235,7 @@ img {
   max-width: 540px;
 }
 
-/* Menu Highlights Section */
+/* Menu Highlights & Grid */
 .culinary-section {
   width: 100%;
   padding: 100px 60px;
@@ -244,6 +249,7 @@ img {
   gap: 24px;
 }
 
+/* Menu Food Card Items */
 .culinary-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -289,6 +295,7 @@ img {
   flex-grow: 1;
 }
 
+/* Price Tag Styling */
 .culinary-card .price {
   font-family: var(--font-serif);
   font-size: 18px;
@@ -305,6 +312,7 @@ img {
   opacity: 1;
 }
 
+/* Auth Navigation Button */
 .nav-auth-btn {
   border: 1px solid var(--gold);
   padding: 8px 18px;
@@ -339,6 +347,7 @@ footer {
   font-size: 24px;
 }
 
+/* Footer Navigation Links */
 .footer-simple-links {
   display: flex;
   gap: 28px;
@@ -358,6 +367,7 @@ footer {
   color: var(--gold);
 }
 
+/* Footer Copyright Text */
 .footer-simple p {
   font-size: 12px;
   color: var(--body-text);

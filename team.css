@@ -1,11 +1,11 @@
-/* Navigation Header */
+/* Navigation Header Bar */
 .team-header-nav {
   position: relative;
   background: var(--bg-card);
   border-bottom: 1px solid var(--border);
 }
 
-/* Team Section Layout */
+/* Team Section Container & Grid Layout */
 .team-container {
   max-width: 1000px;
   margin: 40px auto 80px;
@@ -23,7 +23,7 @@
   gap: 20px;
 }
 
-/* Team Member Cards */
+/* Team Member Cards Styling */
 .team-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -38,6 +38,7 @@
   transform: translateY(-4px);
 }
 
+/* Member Avatar Photo Image */
 .team-card img {
   width: 120px;
   height: 120px;
@@ -47,12 +48,14 @@
   border: 2px solid var(--gold);
 }
 
+/* Member Name Title */
 .team-card h3 {
   font-size: 18px;
   color: var(--heading);
   margin-bottom: 6px;
 }
 
+/* Member Subtitle & Role */
 .team-card p {
   font-size: 13px;
   color: var(--gold);
