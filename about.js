@@ -15,7 +15,15 @@ images.forEach(img => {
       </div>
     `;
 
-    modal.addEventListener('click', () => modal.remove());
+   const closeButton = modal.querySelector('.modal-close-btn');
+
+closeButton.addEventListener('click', () => modal.remove());
+
+modal.addEventListener('click', (event) => {
+  if (event.target === modal) {
+    modal.remove();
+  }
+});
     document.body.appendChild(modal);
   });
 });
