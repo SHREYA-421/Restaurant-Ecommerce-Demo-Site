@@ -1,3 +1,4 @@
+
 /* Navigation Header Bar */
 .team-header-nav {
   position: relative;
@@ -40,12 +41,13 @@
 
 /* Member Avatar Photo Image */
 .team-card img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 50%;
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background: #141312;
+  border-radius: var(--radius-sm);
   margin: 0 auto 16px;
-  border: 2px solid var(--gold);
+  border: 1px solid var(--gold);
 }
 
 /* Member Name Title */
