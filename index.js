@@ -1,150 +1,96 @@
-// The Saffron Plate — Menu Interactive Filtering, Live Search & Detail Lightbox
+// ==========================================
+// THE SAFFRON PLATE — MENU FILTER & LIGHTBOX
+// ==========================================
+
 document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements
   const searchInput = document.getElementById('menu-search-input');
-  const clearSearchBtn = document.getElementById('search-clear-btn');
+  const clearBtn = document.getElementById('search-clear-btn');
   const filterTabs = document.querySelectorAll('.filter-tab');
   const resultCount = document.getElementById('filter-result-count');
-  const resetFilterBtn = document.getElementById('reset-filter-btn');
+  const resetBtn = document.getElementById('reset-filter-btn');
   const emptyResetBtn = document.getElementById('empty-reset-btn');
-  const noResultsState = document.getElementById('no-results-state');
+  const noResults = document.getElementById('no-results-state');
   const cards = document.querySelectorAll('.culinary-card');
 
   let activeCategory = 'all';
-  let searchQuery = '';
 
-  // Dynamically calculate and display dish counts per category
-  function updateCategoryCounts() {
-    filterTabs.forEach(tab => {
-      const category = tab.getAttribute('data-category');
-      const countSpan = tab.querySelector('.tab-count');
-      if (countSpan) {
-        if (category === 'all') {
-          countSpan.textContent = cards.length;
-        } else {
-          let count = 0;
-          cards.forEach(card => {
-            const categories = (card.getAttribute('data-category') || '').split(' ');
-            if (categories.includes(category)) count++;
-          });
-          countSpan.textContent = count;
-        }
-      }
-    });
-  }
+  // 1. Calculate category counts
+  filterTabs.forEach(tab => {
+    const cat = tab.dataset.category;
+    const badge = tab.querySelector('.tab-count');
+    if (badge) {
+      badge.textContent = cat === 'all'
+        ? cards.length
+        : [...cards].filter(c => (c.dataset.category || '').includes(cat)).length;
+    }
+  });
 
-  // Filter & Search Execution
-  function applyFilters() {
+  // 2. Filter & Search Function
+  function filterMenu() {
+    const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
     let visibleCount = 0;
-    const query = searchQuery.trim().toLowerCase();
 
     cards.forEach(card => {
-      const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
-      const desc = card.querySelector('p')?.textContent.toLowerCase() || '';
-      const badge = card.querySelector('.card-category-badge')?.textContent.toLowerCase() || '';
+      const title = (card.querySelector('h3')?.textContent || '').toLowerCase();
+      const desc = (card.querySelector('p')?.textContent || '').toLowerCase();
       const categories = (card.getAttribute('data-category') || '').split(' ');
 
-      const matchesCategory = activeCategory === 'all' || categories.includes(activeCategory);
-      const matchesSearch = !query || title.includes(query) || desc.includes(query) || badge.includes(query);
+      const matchesCat = activeCategory === 'all' || categories.includes(activeCategory);
+      const matchesSearch = !query || title.includes(query) || desc.includes(query);
 
-      if (matchesCategory && matchesSearch) {
-        card.style.display = 'flex';
-        card.style.animation = 'fadeInCard 0.35s ease forwards';
-        visibleCount++;
-      } else {
-        card.style.display = 'none';
-      }
+      const isVisible = matchesCat && matchesSearch;
+      card.style.display = isVisible ? 'flex' : 'none';
+      if (isVisible) visibleCount++;
     });
 
-    // Update Result Count text & Empty State visibility
-    if (visibleCount === 0) {
-      if (noResultsState) noResultsState.style.display = 'block';
-      if (resultCount) {
-        resultCount.textContent = query
-          ? `No results found for "${searchQuery.trim()}"`
-          : 'No delicacies found in this category';
-      }
-    } else {
-      if (noResultsState) noResultsState.style.display = 'none';
-      if (resultCount) {
-        const itemWord = visibleCount === 1 ? 'delicacy' : 'delicacies';
-        if (query && activeCategory !== 'all') {
-          const tabLabel = document.querySelector(`.filter-tab[data-category="${activeCategory}"] .tab-label`)?.textContent || activeCategory;
-          resultCount.textContent = `Showing ${visibleCount} ${itemWord} in ${tabLabel} matching "${searchQuery.trim()}"`;
-        } else if (query) {
-          resultCount.textContent = `Showing ${visibleCount} ${itemWord} matching "${searchQuery.trim()}"`;
-        } else if (activeCategory !== 'all') {
-          const tabLabel = document.querySelector(`.filter-tab[data-category="${activeCategory}"] .tab-label`)?.textContent || activeCategory;
-          resultCount.textContent = `Showing ${visibleCount} ${itemWord} in ${tabLabel}`;
-        } else {
-          resultCount.textContent = `Showing all ${visibleCount} delicacies`;
-        }
-      }
+    // Update Result Text & Empty State
+    if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    if (resultCount) {
+      resultCount.textContent = visibleCount === 0
+        ? (query ? `No delicacies found matching "${query}"` : 'No delicacies in this category')
+        : `Showing ${visibleCount} delicac${visibleCount === 1 ? 'y' : 'ies'}`;
     }
 
-    // Toggle reset buttons & clear search button
-    const hasFilterActive = activeCategory !== 'all' || query.length > 0;
-    if (resetFilterBtn) {
-      resetFilterBtn.style.display = hasFilterActive ? 'inline-block' : 'none';
-    }
-    if (clearSearchBtn) {
-      clearSearchBtn.style.display = query.length > 0 ? 'flex' : 'none';
-    }
+    // Toggle reset & clear buttons
+    const hasActiveFilter = activeCategory !== 'all' || query.length > 0;
+    if (resetBtn) resetBtn.style.display = hasActiveFilter ? 'inline-block' : 'none';
+    if (clearBtn) clearBtn.style.display = query.length > 0 ? 'flex' : 'none';
   }
 
-  // Event: Search Input
-  if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      searchQuery = e.target.value;
-      applyFilters();
+  // 3. Search Events
+  if (searchInput) searchInput.addEventListener('input', filterMenu);
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchInput.focus();
+      filterMenu();
     });
   }
 
-  // Event: Clear Search Button
-  if (clearSearchBtn) {
-    clearSearchBtn.addEventListener('click', () => {
-      if (searchInput) {
-        searchInput.value = '';
-        searchInput.focus();
-      }
-      searchQuery = '';
-      applyFilters();
-    });
-  }
-
-  // Event: Category Tabs
+  // 4. Category Tab Events
   filterTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       filterTabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      activeCategory = tab.getAttribute('data-category');
-      applyFilters();
+      activeCategory = tab.dataset.category || 'all';
+      filterMenu();
     });
   });
 
-  // Reset all filters and search input
-  function resetAllFilters() {
+  // 5. Reset All Filters
+  function resetAll() {
     activeCategory = 'all';
-    searchQuery = '';
     if (searchInput) searchInput.value = '';
-    filterTabs.forEach(tab => {
-      if (tab.getAttribute('data-category') === 'all') {
-        tab.classList.add('active');
-      } else {
-        tab.classList.remove('active');
-      }
-    });
-    applyFilters();
+    filterTabs.forEach(t => t.classList.toggle('active', t.dataset.category === 'all'));
+    filterMenu();
   }
 
-  if (resetFilterBtn) {
-    resetFilterBtn.addEventListener('click', resetAllFilters);
-  }
-  if (emptyResetBtn) {
-    emptyResetBtn.addEventListener('click', resetAllFilters);
-  }
+  if (resetBtn) resetBtn.addEventListener('click', resetAll);
+  if (emptyResetBtn) emptyResetBtn.addEventListener('click', resetAll);
 
-  // Dish Image & Detail Preview Lightbox
+  // 6. Dish Lightbox Modal Preview
   cards.forEach(card => {
     card.style.cursor = 'pointer';
 
@@ -152,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target.closest('button')) return;
 
       const img = card.querySelector('img');
-      const title = card.querySelector('h3')?.textContent || '';
+      const title = card.querySelector('h3')?.textContent || 'Delicacy';
       const price = card.querySelector('.price')?.textContent || '';
       const desc = card.querySelector('p')?.textContent || '';
       const badge = card.querySelector('.card-category-badge')?.textContent || '';
@@ -170,28 +116,25 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      const closeBtn = modal.querySelector('.modal-close-btn');
-      closeBtn.addEventListener('click', () => modal.remove());
-
-      modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
-          modal.remove();
-        }
-      });
-
-      const handleKeyDown = (event) => {
-        if (event.key === 'Escape') {
-          modal.remove();
-          document.removeEventListener('keydown', handleKeyDown);
-        }
+      const closeModal = () => {
+        document.removeEventListener('keydown', onEsc);
+        modal.remove();
       };
-      document.addEventListener('keydown', handleKeyDown);
+
+      const onEsc = (ev) => {
+        if (ev.key === 'Escape') closeModal();
+      };
+
+      document.addEventListener('keydown', onEsc);
+      modal.querySelector('.modal-close-btn').addEventListener('click', closeModal);
+      modal.addEventListener('click', (ev) => {
+        if (ev.target === modal) closeModal();
+      });
 
       document.body.appendChild(modal);
     });
   });
 
-  // Initialize on page load
-  updateCategoryCounts();
-  applyFilters();
+  // Initial Filter Execution
+  filterMenu();
 });
