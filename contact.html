@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us — The Saffron Plate</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,44 +14,37 @@
 
 <body>
 
-  <!-- Header & Navigation Bar -->
   <header class="navbar-overlay contact-header-nav">
     <div class="nav-inner">
-      <!-- Left Navigation Links -->
       <div class="nav-menu-list left">
         <a href="index.html">Home</a>
         <a href="index.html#menu">Menu</a>
+        <a href="order.html">Order Online</a>
         <a href="reservation.html">Reservations</a>
       </div>
-      <!-- Brand Logo Header -->
       <a href="index.html" class="brand-center">
         <span class="brand-name">THE SAFFRON PLATE</span>
         <span class="brand-sub">FINE DINING &amp; GOURMET KITCHEN</span>
       </a>
-      <!-- Right Navigation Links -->
       <div class="nav-menu-list right">
+        <a href="gallery.html">Gallery</a>
         <a href="about.html">About Us</a>
-        <a href="team.html">Our Team</a>
         <a href="contact.html" class="active">Contact</a>
         <a href="auth.html" class="nav-auth-btn">Sign In / Register</a>
       </div>
     </div>
   </header>
 
-  <!-- Contact Page Main Container -->
   <main class="contact-container">
     
-    <!-- Contact Header Title -->
     <div class="contact-header">
       <span class="eyebrow">GET IN TOUCH</span>
       <h1>CONTACT &amp; INQUIRIES</h1>
       <p>Have a question about our menu, special dietary options, or private dining events? Send us a message and our guest relations team will respond promptly.</p>
     </div>
 
-    <!-- Contact Content Grid -->
     <div class="contact-grid">
       
-      <!-- Contact Form Card -->
       <section class="contact-form-card">
         <h2>SEND US A MESSAGE</h2>
         <form class="contact-form" action="#" method="post">
@@ -74,20 +68,12 @@
             <textarea id="contact-message" class="form-input" placeholder="How can we help you?"></textarea>
           </div>
 
-          <button type="submit" class="contact-submit-btn">SEND MESSAGE</button>
-
-          <!-- Local JSON File Actions -->
-          <div class="json-actions">
-            <button type="button" id="export-contact-json" class="export-json-btn">📥 Download All Saved Inquiries (.JSON)</button>
-            <span id="contact-count" class="saved-count">Saved in local storage: 0 inquiries</span>
-          </div>
+          <button type="button" class="contact-submit-btn">SEND MESSAGE</button>
         </form>
       </section>
 
-      <!-- Contact Info Side Panel -->
       <aside class="contact-info-panel">
         
-        <!-- Address & Direct Contact Card -->
         <div class="contact-info-card">
           <h3>DIRECT CONTACT</h3>
           <div class="info-list">
@@ -117,7 +103,6 @@
           </div>
         </div>
 
-        <!-- Support Operating Hours Card -->
         <div class="contact-info-card">
           <h3>SUPPORT HOURS</h3>
           <div class="info-list">
@@ -137,15 +122,15 @@
 
   </main>
 
-  <!-- Footer Section -->
   <footer>
     <div class="footer-simple">
       <span class="brand-name">THE SAFFRON PLATE</span>
-      <!-- Footer Navigation Links -->
       <ul class="footer-simple-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html#menu">Menu</a></li>
+        <li><a href="order.html">Order Online</a></li>
         <li><a href="reservation.html">Reservations</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="team.html">Our Team</a></li>
         <li><a href="contact.html">Contact Us</a></li>
@@ -155,7 +140,6 @@
     </div>
   </footer>
 
-  <script src="contact.js"></script>
 </body>
 
 </html>
