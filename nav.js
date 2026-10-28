@@ -1,7 +1,3 @@
-/**
- * The Saffron Plate — Unified Navigation & Mobile Drawer
- * Provides scroll-aware glassmorphism, responsive drawer, active state, and live cart syncing.
- */
 (function () {
   'use strict';
 
@@ -12,8 +8,9 @@
     const closeBtn = document.getElementById('mobileNavClose');
     const drawerBackdrop = document.getElementById('mobileNavBackdrop');
     const cartCountEls = document.querySelectorAll('.nav-cart-count');
+    const dropdown = document.getElementById('navAccountDropdown');
+    const dropdownTrigger = document.getElementById('navDropdownTrigger');
 
-    // 1. Scroll effect for glassmorphic transition
     function onScroll() {
       if (!header) return;
       if (window.scrollY > 20) {
@@ -25,7 +22,6 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // 2. Mobile drawer open / close
     function openDrawer() {
       if (!drawer) return;
       drawer.classList.add('is-open');
@@ -68,9 +64,52 @@
       drawerBackdrop.addEventListener('click', closeDrawer);
     }
 
+    let dropdownTimer = null;
+
+    function openDropdown() {
+      if (!dropdown) return;
+      clearTimeout(dropdownTimer);
+      dropdown.classList.add('is-open');
+      if (dropdownTrigger) dropdownTrigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeDropdown() {
+      if (!dropdown) return;
+      dropdownTimer = setTimeout(function () {
+        dropdown.classList.remove('is-open');
+        if (dropdownTrigger) dropdownTrigger.setAttribute('aria-expanded', 'false');
+      }, 150);
+    }
+
+    if (dropdown && dropdownTrigger) {
+      dropdownTrigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (dropdown.classList.contains('is-open')) {
+          dropdown.classList.remove('is-open');
+          dropdownTrigger.setAttribute('aria-expanded', 'false');
+        } else {
+          openDropdown();
+        }
+      });
+
+      dropdown.addEventListener('mouseenter', openDropdown);
+      dropdown.addEventListener('mouseleave', closeDropdown);
+    }
+
+    document.addEventListener('click', function (e) {
+      if (dropdown && !dropdown.contains(e.target)) {
+        dropdown.classList.remove('is-open');
+        if (dropdownTrigger) dropdownTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) {
-        closeDrawer();
+      if (e.key === 'Escape') {
+        if (drawer && drawer.classList.contains('is-open')) closeDrawer();
+        if (dropdown && dropdown.classList.contains('is-open')) {
+          dropdown.classList.remove('is-open');
+          if (dropdownTrigger) dropdownTrigger.setAttribute('aria-expanded', 'false');
+        }
       }
     });
 
@@ -82,7 +121,6 @@
       });
     }
 
-    // 3. Sync live cart badge count with localStorage
     function updateCartBadge() {
       try {
         const raw = localStorage.getItem('saffron_order_cart');
@@ -112,25 +150,42 @@
             el.classList.remove('has-items');
           }
         });
-      } catch (err) {
-        // no-op
-      }
+      } catch (err) {}
     }
 
     updateCartBadge();
     window.addEventListener('storage', updateCartBadge);
     window.addEventListener('cartUpdated', updateCartBadge);
 
-    // 4. Mark active link automatically based on location
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const currentHash = window.location.hash || '';
+
     document.querySelectorAll('.nav-menu-list a, .mobile-drawer-links a').forEach(function (link) {
       const href = link.getAttribute('href');
       if (!href) return;
-      const cleanHref = href.split('#')[0].split('/').pop();
-      if (cleanHref && (cleanHref === currentPath || (currentPath === '' && cleanHref === 'index.html'))) {
-        link.classList.add('active');
+
+      link.classList.remove('active');
+
+      const parts = href.split('#');
+      const targetPage = parts[0].split('/').pop() || (parts[0] === '' ? currentPath : 'index.html');
+      const targetHash = parts[1] ? '#' + parts[1] : '';
+
+      const isCurrentPage = (targetPage === currentPath) || (currentPath === '' && targetPage === 'index.html');
+
+      if (targetHash) {
+        if (isCurrentPage && currentHash === targetHash) {
+          link.classList.add('active');
+        }
+      } else {
+        if (isCurrentPage && (!currentHash || currentHash === '#home')) {
+          link.classList.add('active');
+        }
       }
     });
+
+    if (currentPath === 'auth.html' && dropdownTrigger) {
+      dropdownTrigger.classList.add('active');
+    }
   }
 
   if (document.readyState === 'loading') {
