@@ -30,6 +30,7 @@
       <!-- Right Navigation Links -->
       <div class="nav-menu-list right">
         <a href="about.html">About Us</a>
+        <a href="team.html">Our Team</a>
         <a href="contact.html" class="active">Contact</a>
         <a href="auth.html" class="nav-auth-btn">Sign In / Register</a>
       </div>
@@ -73,7 +74,13 @@
             <textarea id="contact-message" class="form-input" placeholder="How can we help you?"></textarea>
           </div>
 
-          <button type="button" class="contact-submit-btn">SEND MESSAGE</button>
+          <button type="submit" class="contact-submit-btn">SEND MESSAGE</button>
+
+          <!-- Local JSON File Actions -->
+          <div class="json-actions">
+            <button type="button" id="export-contact-json" class="export-json-btn">📥 Download All Saved Inquiries (.JSON)</button>
+            <span id="contact-count" class="saved-count">Saved in local storage: 0 inquiries</span>
+          </div>
         </form>
       </section>
 
