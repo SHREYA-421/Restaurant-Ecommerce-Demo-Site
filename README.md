@@ -3,9 +3,9 @@
 # 👑 THE SAFFRON PLATE
 ### *Fine Dining & Pure Vegetarian Kitchen*
 
-An ultra-luxurious, pure HTML5 & CSS3 website for **The Saffron Plate**, a high-end vegetarian restaurant blending royal Indian culinary heritage with modern gastronomy aesthetics.
+An ultra-luxurious, responsive web application for **The Saffron Plate**, a high-end vegetarian restaurant blending royal Indian culinary heritage with modern gastronomy aesthetics.
 
-[Live Demo](#-getting-started) • [Menu Highlights](#-signature-menu) • [Design System](#-design-system) • [Project Structure](#-file-structure)
+[Overview](#-overview) • [Evaluation Parameters](#-web-project---2nd-evaluation-implementation) • [Design System](#-design-system--color-palette) • [Project Structure](#-file-structure) • [Team](#-project-team)
 
 ---
 
@@ -13,25 +13,38 @@ An ultra-luxurious, pure HTML5 & CSS3 website for **The Saffron Plate**, a high-
 
 ## 🌟 Overview
 
-**The Saffron Plate** offers an exquisite dining experience with a design inspired by world-class gastronomy interfaces (e.g., *LUMIÈRE*). Built with **zero JavaScript**, the website leverages advanced CSS3 capabilities including backdrop-filters, custom properties, glassmorphism, responsive grid architecture, and pure CSS interaction hooks.
+**The Saffron Plate** offers an exquisite dining experience inspired by world-class gastronomy interfaces. Crafted with **semantic HTML5, vanilla CSS3, and modern vanilla JavaScript**, the application showcases interactive guest services—including dynamic image modals, comprehensive form validation, client-side data persistence, and automatic JSON file generation.
+
+---
+
+## 🎯 Web Project - 2nd Evaluation Implementation
+
+This project addresses all four parameters of the **2nd Evaluation Rubric** using pure client-side web technologies (no external API or Node.js dependencies):
+
+| Parameter | Description & Implementation |
+| :--- | :--- |
+| **1. Page Linking & Interconnection** | All 6 pages (`index.html`, `about.html`, `reservation.html`, `team.html`, `contact.html`, `auth.html`) are linked consistently across navigation headers and footer directories. |
+| **2. JavaScript Interactions & UX** | Interactive image lightbox modals (`index.js`, `about.js`, `team.js`), dynamic minimum date constraints, input error shaking animations (`.input-error`), and live feedback alerts. |
+| **3. Form Submission & Validation** | Validation across all forms: required fields, minimum phone digit length check, email syntax regex verification, password minimum length check, and double-submission protection. |
+| **4. Local JSON File Saving** | Form submissions are stored and accumulated in `localStorage` and automatically exported as downloadable local JSON files (`reservations.json` & `contacts.json`). Each form also includes a dedicated **"Download All Saved (.JSON)"** button and live counter. |
 
 ---
 
 ## ✨ Key Design & Architectural Features
 
 - 🌌 **Overlay Navigation Bar**: Transparent header overlaying the full-bleed hero backdrop image.
-- 🖼️ **Full-Width Hero Section**: Split-gradient vignette backdrop ensuring perfect text legibility alongside high-resolution food photography.
-- 🍷 **Quick Reservation Bar**: Positioned beneath the hero section for instant table booking with custom select dropdowns.
-- 🍽️ **Culinary Highlights Grid**: 3-column photo-card layout flanked by botanical leaf line art margin accents.
+- 🖼️ **Interactive Lightbox Modals**: Click-to-preview modals on culinary dishes, restaurant heritage photos, and team member profile cards.
+- 🍷 **Table Reservation Engine**: Date picker with automatic past-date blocking, guest count selection, time slots, and instant JSON ticket generation.
+- 📬 **Guest Inquiries System**: Contact form with real-time email syntax validation and JSON export.
+- 🔐 **Account Access Portal**: Guest sign-in validation and simulated session storage.
 - 📜 **13 Signature Menu Delicacies**: High-resolution photography cards featuring classic Indian, Asian, South Indian, and dessert creations.
-- 🚫 **Zero JavaScript Dependency**: Built using pure semantic HTML5 and vanilla CSS3 for ultra-fast performance and clean layout.
-- 🔇 **Zero Emojis**: Clean, elegant serif and sans-serif typography for a pure, ultra-luxury aesthetic.
+- 🎨 **Royal Indian Aesthetics**: Glassmorphism surfaces, gold accents, smooth micro-interactions, and refined typography.
 
 ---
 
 ## 🎨 Design System & Color Palette
 
-The color scheme is crafted to evoke royal Indian heritage, warm hospitality, and timeless luxury.
+The color scheme evokes royal Indian heritage, warm hospitality, and timeless luxury.
 
 | Color Name | Hex Code | Visual Sample | Usage |
 | :--- | :--- | :---: | :--- |
@@ -45,41 +58,28 @@ The color scheme is crafted to evoke royal Indian heritage, warm hospitality, an
 
 ---
 
-## 📜 Signature Menu
-
-| Category | Dish Name | Description | Price |
-| :--- | :--- | :--- | :-: |
-| **Royal Classic** | **Chole Bhature** | Pillowy fried bhature with slow-simmered dark chana masala | ₹120 |
-| **Street Special** | **Golgappe** | Crisp puris filled with spiced potato sprouts & mint water | ₹80 |
-| **Chef's Special** | **Gulab Jamun** | Soft khoya dumplings soaked in warm rose-cardamom syrup | ₹70 |
-| **Asian Gourmet** | **Hakka Noodles** | Wok-tossed noodles with fresh vegetables & sesame | ₹150 |
-| **Luxury Dessert** | **Hot Fudge Sundae** | Vanilla gelato with warm dark chocolate fudge & almonds | ₹140 |
-| **Royal Feast** | **Maharaja Indian Thali** | Platter of Paneer Butter Masala, Dal Makhani, Pulao, Naan & Lassi | ₹280 |
-| **Royal Classic** | **Malai Chaap** | Char-grilled soya skewers in cream & cashew marinade | ₹180 |
-| **South Indian** | **Masala Dosa** | Golden crispy crepe filled with spiced potato masala | ₹135 |
-| **Steamed Special** | **Momos** | Steamed vegetable dumplings with fiery red chutney | ₹110 |
-| **Artisan Ramen** | **Ramen** | Rich vegetarian miso broth with hand-pulled noodles & bok choy | ₹190 |
-| **Signature Dessert** | **Rasmalai** | Delicate chenna discs in saffron-cardamom milk | ₹90 |
-| **Cold Refreshment** | **Strawberry Shake** | Mahabaleshwar strawberry shake with double cream | ₹130 |
-
----
-
 ## 📁 File Structure
 
 ```
 assessment/
 ├── index.html          # Main Homepage & Menu Showcase
-├── styles.css          # Core Design System & Global Styles
+├── index.js            # Culinary card modal preview interactions
+├── styles.css          # Core Design System, Animations & Global Styles
 ├── about.html          # About Us & Restaurant Heritage
+├── about.js            # Heritage gallery modal preview interactions
 ├── about.css           # About Page Styles
-├── reservation.html    # Table Reservation Form
+├── reservation.html    # Table Reservation Form & JSON Export UI
+├── reservation.js      # Reservation validation, localStorage & JSON generator
 ├── reservation.css     # Reservation Page Styles
-├── auth.html           # Guest Account Access / Sign In
-├── auth.css            # Auth Page Styles
-├── contact.html        # Contact & Inquiries Page
+├── contact.html        # Contact & Inquiries Page & JSON Export UI
+├── contact.js          # Contact validation, regex checking & JSON generator
 ├── contact.css         # Contact Page Styles
 ├── team.html           # Project Team Showcase Page
+├── team.js             # Team member image preview interactions
 ├── team.css            # Team Page Styles
+├── auth.html           # Guest Account Access / Sign In
+├── auth.js             # Sign-in validation & session management
+├── auth.css            # Auth Page Styles
 ├── README.md           # Project Documentation
 └── images/             # High-Resolution Photography Assets
 ```
@@ -97,18 +97,24 @@ assessment/
 
 ## 💻 Getting Started
 
-To run this project locally:
+To run and test this project locally:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/SHREYA-421/Restaurant-Ecommerce-Demo-Site.git
+   git clone git@github.com:SHREYA-421/Restaurant-Ecommerce-Demo-Site.git
    ```
-2. **Navigate into the directory**:
+2. **Open the project folder**:
    ```bash
    cd Restaurant-Ecommerce-Demo-Site
    ```
-3. **Open `index.html` in your web browser**:
-   - Double click `index.html` or open via Live Server.
+3. **Launch in Browser**:
+   - Double-click `index.html` to open in any web browser, or
+   - Right-click `index.html` in VS Code and select **Open with Live Server**.
+
+### Testing Evaluation Features:
+- **Table Reservations**: Open `reservation.html`, fill out the form, and click **Confirm Reservation**. The browser will validate inputs, persist the data, and download `reservations.json`.
+- **Contact Inquiries**: Open `contact.html`, enter a message, and click **Send Message** to export `contacts.json`.
+- **Export History**: Use the **"📥 Download All Saved (.JSON)"** button on either form to download all previously saved submissions.
 
 ---
 
