@@ -1,8 +1,4 @@
-.team-header-nav {
-  position: relative;
-  background: var(--bg-card);
-  border-bottom: 1px solid var(--border);
-}
+/* Team Page Styles */
 
 .team-container {
   max-width: 1000px;

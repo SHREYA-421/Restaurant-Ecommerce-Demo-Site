@@ -1,8 +1,4 @@
-.contact-header-nav {
-  position: relative;
-  background: var(--bg-card);
-  border-bottom: 1px solid var(--border);
-}
+/* Contact Page Styles */
 
 .contact-container {
   max-width: 960px;

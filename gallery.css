@@ -1,12 +1,4 @@
-.gallery-nav-sticky {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(33, 30, 27, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
+/* Gallery Page Styles */
 
 .gallery-page-wrapper {
   min-height: 100vh;

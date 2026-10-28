@@ -1,8 +1,4 @@
-.res-header-nav {
-  position: relative;
-  background: var(--bg-card);
-  border-bottom: 1px solid var(--border);
-}
+/* Reservation Page Styles */
 
 .res-container {
   max-width: 600px;

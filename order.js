@@ -194,6 +194,7 @@ const toastNotifyEl = document.getElementById("toast-notify");
 function saveCart() {
   try {
     localStorage.setItem("saffron_order_cart", JSON.stringify(cart));
+    window.dispatchEvent(new Event("cartUpdated"));
   } catch (e) {}
 }
 
