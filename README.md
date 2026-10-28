@@ -3,80 +3,143 @@
 # 👑 THE SAFFRON PLATE
 ### *Fine Dining & Royal Pure Vegetarian Kitchen*
 
-**An ultra-luxurious, multi-page culinary web platform blending royal Indian culinary heritage with modern gastronomy interface aesthetics.**
+**An ultra-luxurious, responsive culinary web platform blending royal Indian culinary heritage with modern gastronomy interface aesthetics.**
 
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript_ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![JSON](https://img.shields.io/badge/Local_JSON_Export-000000?style=for-the-badge&logo=json&logoColor=white)](https://www.json.org/)
+[![No External Dependencies](https://img.shields.io/badge/Dependencies-Zero_Vanilla-success?style=for-the-badge)](https://developer.mozilla.org/)
 
-[Live Overview](#-overview) • [2nd Evaluation Parameters](#-web-project---2nd-evaluation-implementation-matrix) • [Interactive Features](#-interactive-features--javascript-architecture) • [Design System](#-design-system--tokens) • [Signature Menu](#-signature-menu-delicacies) • [File Structure](#-project-directory-structure) • [Demo & Testing](#-getting-started--examiner-testing-guide) • [Team](#-project-team)
+[About The Project](#-about-the-project) • [Key Features](#-key-features) • [Technical Architecture & Logics](#-technical-architecture--logics) • [Signature Menu](#-signature-menu-delicacies) • [Design System](#-design-system--tokens) • [Project Structure](#-project-directory-structure) • [Getting Started](#-getting-started) • [Contributors](#-project-contributors)
 
 ---
 
 </div>
 
-## 🌟 Overview
+## 🌟 About The Project
 
-**The Saffron Plate** is a web application developed for fine-dining hospitality. The platform represents an authentic Indian royal culinary experience through world-class digital gastronomy interfaces (drawing aesthetic inspiration from *LUMIÈRE* and high-end Michelin-starred portfolios).
+**The Saffron Plate** is a high-end web platform designed for an exquisite, pure-vegetarian fine-dining restaurant. Inspired by royal Indian culinary traditions and world-class digital hospitality interfaces, the project delivers a refined gastronomic journey right inside the browser.
 
-Built with **semantic HTML5, vanilla CSS3 design tokens, and modular vanilla JavaScript (ES6+)**, the application emphasizes responsive typography, glassmorphism card surfaces, gold highlight accents, interactive culinary exploration, and pure client-side data persistence with local JSON file generation.
-
----
-
-## 🎯 Web Project - 2nd Evaluation Implementation Matrix
-
-The project fulfills all four mandatory parameters of the **2nd Evaluation Rubric** using pure client-side architecture (no Node.js or external API dependencies required at this stage):
-
-| Evaluation Parameter | Academic Requirement | Implementation in The Saffron Plate | Key Files |
-| :--- | :--- | :--- | :--- |
-| **Parameter 1: Multi-Page Linking** | Additional pages to be implemented, fully interlinked with consistent navigation. | Built **6 distinct, fully interconnected pages** with synchronized navigation bars (overlay state, active page indicator, brand link, and full footer sitemap). | `index.html`, `about.html`, `reservation.html`, `team.html`, `contact.html`, `auth.html` |
-| **Parameter 2: JavaScript Interactions** | Form validation, event handling, UX interactions, responsive animations. | Live keyword search, dynamic category tab filtering, real-time category counter badges, interactive lightbox modal previews, date picker bounds, input error shaking (`.input-error`). | `index.js`, `about.js`, `team.js`, `styles.css` |
-| **Parameter 3: Form Submissions** | Robust form submission handling with real-time feedback and state management. | Forms intercept `submit` events (`e.preventDefault()`), validate inputs, present feedback alerts (`.form-msg.success` and `.form-msg.error`), and auto-reset on completion. | `reservation.js`, `contact.js`, `auth.js` |
-| **Parameter 4: Saving Form Data to Local JSON** | Submitted form records saved to downloadable local JSON files on the computer. | Form submissions are stored and accumulated in `localStorage` and automatically downloaded as formatted `.json` files (`reservations.json` & `contacts.json`). Includes dedicated one-click export buttons and live record counters. | `reservation.js`, `contact.js`, `styles.css` |
+The website is crafted entirely with **semantic HTML5, modern vanilla CSS3 design tokens, and modular vanilla JavaScript (ES6+)**—with zero third-party framework overhead. It delivers instant performance, silky micro-interactions, responsive grids, rich imagery, and client-side data persistence with local JSON file generation.
 
 ---
 
-## ⚡ Interactive Features & JavaScript Architecture
+## ✨ Key Features
 
-### 1. Menu Live Search & Category Filtering (`index.js`)
-- **Real-Time Keyword Filtering**: Instant query evaluation across dish names and ingredient descriptions as the user types.
-- **Category Filter Tabs**: One-click filtering across categories (*Royal Classics, Street Specials, Asian Gourmet, Desserts, Beverages*).
-- **Dynamic Category Counts**: Automated counting of items per category badge (`.tab-count`).
-- **Graceful Empty State**: If no dishes match the criteria, a custom `#no-results-state` card is displayed with an instant reset button.
-- **Live Search Clear**: Interactive `×` clear icon that resets the query and restores full view with focus management.
+### 🔍 1. Interactive Menu Explorer with Live Search & Tabs
+- **Instant Keyword Search**: Filter dishes in real time by searching for dish names or ingredients (e.g. *"Dosa"*, *"Paneer"*, *"Ramen"*, *"Truffle"*).
+- **Category Filter Tabs**: Explore culinary offerings categorized into *All Items*, *Royal Classics*, *Street Specials*, *Asian Gourmet*, *Desserts*, and *Beverages*.
+- **Dynamic Category Count Badges**: Real-time counters showing the number of available items per category.
+- **Live Search Clear**: An intuitive clear icon (`×`) resets the query and restores full view instantly.
+- **Empty State Feedback**: If no dishes match the query, a dedicated empty-state banner appears with a one-click reset action.
 
-### 2. Multi-Card Lightbox Preview Modals (`index.js`, `about.js`, `team.js`)
-- High-resolution modal overlays when clicking any menu card, heritage story photo, or team contributor card.
-- Displays dish image, category tag, full gastronomic description, and price.
-- **Comprehensive Dismissal UX**:
-  - Click on top-right close icon (`×`).
-  - Click anywhere outside modal content (backdrop overlay).
-  - Press keyboard `Escape` key (automatically cleans up event listener).
+### 🖼️ 2. High-Resolution Lightbox Modal Overlays
+- Clicking on any culinary card, heritage gallery photo, or team profile opens a rich modal dialog.
+- Displays full-bleed imagery, category tags, gastronomic descriptions, and pricing.
+- **Full Dismissal UX**: Close by clicking the top-right `×` button, clicking the dark backdrop outside the modal, or simply pressing the keyboard `Escape` key.
 
-### 3. Smart Form Validation & Error Animations (`reservation.js`, `contact.js`, `auth.js`)
-- **Past-Date Lock**: Reservation date input dynamically assigns `min` attribute to today's date (`new Date().toISOString().split('T')[0]`), preventing booking past dates.
-- **Phone Number Validation**: Verifies phone inputs have at least 10 valid numeric digits (`/^\+?[0-9]{10,14}$/`).
-- **Email Syntax Validation**: Validates RFC email format (`/^[^\s@]+@[^\s@]+\.[^\s@]+$/`).
-- **Password Strength Check**: Validates guest sign-in password has a minimum of 6 characters.
-- **Visual Feedback**: Erroneous input fields trigger an animated shake keyframe (`shakeError`) with crimson border styling (`.input-error`).
+### 🍷 3. Table Reservation Booking System
+- Comprehensive booking form collecting guest details, phone number, party size, reservation date, and preferred dining time slot.
+- **Dynamic Past-Date Lockout**: The date picker automatically disables past dates using the current client date as the minimum selectable date.
+- **Input Validation**: Ensures all required fields are present with a valid phone number.
+- **Instant JSON Ticket Generation**: Submitting the form automatically compiles the reservation into a local `reservations.json` file and downloads it to the user's computer.
+- **On-Demand JSON Export**: Includes a dedicated button to export all accumulated reservations at any time.
 
-### 4. Client-Side Local JSON Storage & File Generator Engine
-- **Storage Strategy**: Overcomes browser sandbox restrictions by accumulating entries in browser `localStorage` and serializing records with `JSON.stringify(data, null, 2)`.
-- **Automatic File Download**: Form submission instantiates an in-memory `Blob` of type `application/json;charset=utf-8;` and invokes a virtual anchor download click.
-- **On-Demand Export Button**: Evaluators can click the **"📥 Download All Saved (.JSON)"** button at any time to export the full cumulative database.
-- **Live Counter**: UI badge displays the current count of stored submissions (e.g., `Saved in local storage: 3 reservations`).
+### 📬 4. Guest Inquiries & Contact Portal
+- Dedicated inquiries form with real-time email syntax verification (regex-based).
+- Direct address, operating support hours, direct phone link, and email dispatch links.
+- Automatically saves and exports submitted inquiries into a downloadable `contacts.json` file.
+
+### 🔐 5. Guest Account Access (Sign In / Register)
+- Clean, focused account portal with email format and minimum password length validation.
+- Input error indicators with shake keyframe animations.
+- Simulates guest authentication state with feedback notifications.
+
+### 👥 6. Interactive Team Showcase
+- Dedicated page highlighting the creators and contributors of The Saffron Plate.
+- Hover animations with elevation effects, golden borders, and click-to-preview profile lightboxes.
 
 ---
 
-## 📄 JSON Data Schemas
+## ⚡ Technical Architecture & Logics
 
-### A. Reservation Record (`reservations.json`)
+The project is structured cleanly using standard web technologies without external package managers or bundlers:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                       USER INTERFACE                        │
+│   index.html • about.html • reservation.html • contact.html │
+│                 team.html • auth.html                       │
+└──────────────────────────────┬──────────────────────────────┘
+                               │
+                ┌──────────────┴──────────────┐
+                ▼                             ▼
+┌──────────────────────────────┐ ┌──────────────────────────────┐
+│       STYLE ARCHITECTURE     │ │      JAVASCRIPT LOGICS       │
+│  styles.css (Global tokens)  │ │  index.js (Filter & Modal)   │
+│  Page-specific CSS modules   │ │  reservation.js (JSON Store) │
+│  Backdrop filters & glow     │ │  contact.js (Regex & Export) │
+│  Keyframe error animations   │ │  auth.js (Validation)       │
+│  Responsive flex/grid        │ │  team.js & about.js (Modals) │
+└──────────────────────────────┘ └──────────────┬───────────────┘
+                                                │
+                                                ▼
+                               ┌────────────────────────────────┐
+                               │     CLIENT-SIDE PERSISTENCE    │
+                               │   localStorage Data Stores     │
+                               │   Blob API & URL.createObjectURL│
+                               │   Direct JSON File Downloads   │
+                               └────────────────────────────────┘
+```
+
+### 1. Menu Filtering & Search Logic (`index.js`)
+The filtering logic runs on input events and tab clicks:
+1. It retrieves the sanitized search string and active category.
+2. Loops through each `.culinary-card` and checks:
+   - Does the card's `data-category` match the active tab (or is `'all'` selected)?
+   - Does the dish title or description contain the search string?
+3. Matches are set to `display: flex`, while non-matches are hidden (`display: none`).
+4. If no dishes match, the `#no-results-state` card is displayed.
+
+### 2. Form Validation & UX Feedback (`reservation.js`, `contact.js`, `auth.js`)
+Form submissions intercept the default submission event via `e.preventDefault()`:
+- **Phone Validation**: Cleaned of spaces/dashes and validated against `/^\+?[0-9]{10,14}$/`.
+- **Email Validation**: Checked against standard RFC email regex `/^[^\s@]+@[^\s@]+\.[^\s@]+$/`.
+- **Error Indication**: Invalid inputs receive the `.input-error` class, triggering a 0.35s CSS horizontal shake animation (`shakeError`) with crimson border styling.
+- **Success Indication**: Valid entries produce a `.form-msg.success` banner with green accents and formatted confirmation details.
+
+### 3. Local JSON File Generation Engine
+Because client-side JavaScript operates inside a browser security sandbox without direct write access to system folders, the application leverages the **Web Blob API**:
+```javascript
+function downloadJsonFile(data, filename) {
+  const jsonContent = JSON.stringify(data, null, 2);
+  const blob = new Blob([jsonContent], { type: 'application/json;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+```
+1. New submissions are appended to an array in `localStorage` (`saffron_reservations` and `saffron_contacts`), ensuring records persist even after page reloads.
+2. The complete accumulated list is serialized and downloaded as a formatted `.json` file.
+3. The UI counter badge (`#res-count` and `#contact-count`) updates dynamically to reflect the total stored records.
+
+---
+
+## 📄 JSON Data Formats
+
+### `reservations.json`
 ```json
 [
   {
     "id": "RES-1730114400000",
-    "name": "Arjun Sharma",
+    "name": "Aarav Sharma",
     "phone": "+91 98765 43210",
     "guests": "4 Guests",
     "date": "2026-11-05",
@@ -86,7 +149,7 @@ The project fulfills all four mandatory parameters of the **2nd Evaluation Rubri
 ]
 ```
 
-### B. Contact Inquiry Record (`contacts.json`)
+### `contacts.json`
 ```json
 [
   {
@@ -99,29 +162,6 @@ The project fulfills all four mandatory parameters of the **2nd Evaluation Rubri
   }
 ]
 ```
-
----
-
-## 🎨 Design System & Tokens
-
-The visual language is structured around an ultra-luxury dark palette, royal saffron-gold metallic accents, and refined serif typography.
-
-| Token / Color Name | Hex Code / Value | Sample | Architectural Purpose |
-| :--- | :--- | :---: | :--- |
-| `--bg-main` | `#171717` | `⬛` | Core viewport background canvas |
-| `--bg-card` | `#211E1B` | `🟫` | Glassmorphic card surfaces, navigation, panels |
-| `--heading` | `#F5EFE6` | `⬜` | High-contrast brand headers and title typography |
-| `--body-text` | `#D8D0C4` | `🌫️` | Warm neutral body paragraphs and descriptive copy |
-| `--gold` | `#C9A227` | `🟨` | Royal gold brand highlights, accents, borders, buttons |
-| `--gold-light` | `#E0B93D` | `✨` | Interactive hover glows, focus indicators, active states |
-| `--border` | `#4A4038` | `🤎` | Subtle card dividers and structural outline borders |
-| `--radius-sm` | `4px` | — | Input elements, button edges, image rounding |
-| `--radius-md` | `8px` | — | Card containers, modal windows, dialog surfaces |
-
-### Typography Hierarchy
-- **Brand & Section Headings**: [Cinzel](https://fonts.google.com/specimen/Cinzel) (Classical Roman Serif, `500`, `600`, `700`)
-- **Editorial Subtitles & Quotes**: [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond) (Display Italic, `400`, `500`)
-- **Body & UI Controls**: [Jost](https://fonts.google.com/specimen/Jost) (Clean Geometric Sans-serif, `300`, `400`, `500`)
 
 ---
 
@@ -142,6 +182,29 @@ The visual language is structured around an ultra-luxury dark palette, royal saf
 | 11 | **Signature Dessert** | **Rasmalai** | Delicate chenna discs gently simmered in saffron milk, garnished with pistachio slivers | ₹90 |
 | 12 | **Cold Refreshment** | **Strawberry Shake** | Churned organic Mahabaleshwar strawberry shake topped with double cream & white chocolate curls | ₹130 |
 | 13 | **Artisan Coffee** | **Iced Coffee** | Slow-dripped Arabica cold brew blended with sweetened cream, dark cocoa & roasted hazelnuts | ₹125 |
+
+---
+
+## 🎨 Design System & Tokens
+
+The aesthetic identity is defined by a curated luxury color palette, refined serif headings, clean body typography, and subtle micro-interactions:
+
+| Token | Hex Value | Visual | Architectural Usage |
+| :--- | :--- | :---: | :--- |
+| `--bg-main` | `#171717` | `⬛` | Page background canvas |
+| `--bg-card` | `#211E1B` | `🟫` | Glassmorphic card surfaces, navigation, panels |
+| `--heading` | `#F5EFE6` | `⬜` | High-contrast brand headers and title typography |
+| `--body-text` | `#D8D0C4` | `🌫️` | Warm neutral body paragraphs and descriptive copy |
+| `--gold` | `#C9A227` | `🟨` | Royal gold brand highlights, accents, borders, buttons |
+| `--gold-light` | `#E0B93D` | `✨` | Interactive hover glows, focus indicators, active states |
+| `--border` | `#4A4038` | `🤎` | Subtle card dividers and structural outline borders |
+| `--radius-sm` | `4px` | — | Input elements, button edges, image rounding |
+| `--radius-md` | `8px` | — | Card containers, modal windows, dialog surfaces |
+
+### Typography Hierarchy
+- **Brand & Headings**: [Cinzel](https://fonts.google.com/specimen/Cinzel) — Classical Roman Serif (`500`, `600`, `700`)
+- **Quotes & Subtitles**: [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond) — Display Italic (`400`, `500`)
+- **Body & Controls**: [Jost](https://fonts.google.com/specimen/Jost) — Clean Sans-serif (`300`, `400`, `500`)
 
 ---
 
@@ -194,74 +257,42 @@ assessment/
 
 ---
 
-## 💻 Getting Started & Examiner Testing Guide
+## 💻 Getting Started
 
-Follow these steps to run the application locally and verify all 2nd Evaluation criteria:
+You can run the project locally on any operating system without installing any runtime or package managers.
 
-### 1. Repository Setup
+### 1. Clone Repository
 ```bash
-# Clone the repository
 git clone git@github.com:SHREYA-421/Restaurant-Ecommerce-Demo-Site.git
-
-# Navigate into the project folder
 cd Restaurant-Ecommerce-Demo-Site
 ```
 
-### 2. Launch in Browser
-- **Direct**: Double-click `index.html` to open in Google Chrome, Microsoft Edge, or Mozilla Firefox.
-- **VS Code Live Server**: Right-click `index.html` and choose **Open with Live Server**.
+### 2. Open in Browser
+- **Direct**: Double click `index.html` to open directly in Google Chrome, Microsoft Edge, Safari, or Firefox.
+- **VS Code Live Server**: Right-click `index.html` in VS Code and select **Open with Live Server**.
 
-### 3. Step-by-Step Feature Verification
-
-#### A. Parameter 1: Page Interlinking
-- Click every link in the top navigation bar and footer on every page.
-- Verify that `index.html`, `about.html`, `reservation.html`, `team.html`, `contact.html`, and `auth.html` link to each other seamlessly.
-
-#### B. Parameter 2: JavaScript Interactions & UX
-- On `index.html`, test the **Live Search Bar**: Type `"Dosa"`, `"Ramen"`, or `"Chocolate"` — see instant matching.
-- Click the **Category Tabs** (*Royal Classics, Desserts, Asian Gourmet*) — see instant filtering and counter updates.
-- Click on any food card — verify the **Detail Lightbox Modal** opens. Dismiss it with the `×` button, by clicking outside, or by pressing `Escape`.
-- On `team.html`, click any member card to preview their profile modal.
-
-#### C. Parameter 3: Form Validation
-- On `reservation.html`, click **Confirm Reservation** with empty fields: Observe the red input shaking animation (`.input-error`) and prompt.
-- Enter an invalid phone number (e.g., fewer than 10 digits): Observe the validation message.
-- On `contact.html`, enter an invalid email format (e.g., `user@domain` without TLD): Observe the regex error.
-
-#### D. Parameter 4: Saving Data to Local JSON Files
-- Fill out a valid reservation on `reservation.html` and submit.
-- **Immediate Result**: Your browser will automatically trigger the download of **`reservations.json`**.
-- Notice the live counter updates: `Saved in local storage: 1 reservation`.
-- Click **"📥 Download All Saved Reservations (.JSON)"** at any time to re-export the complete JSON dataset.
-- Repeat on `contact.html` to download and inspect **`contacts.json`**.
+### 3. Exploring the Platform
+1. **Explore the Menu**: Type into the search bar or switch category tabs to filter delicacies in real time.
+2. **Preview Delicacies**: Click any dish card to view the lightbox modal with high-res photography and descriptions.
+3. **Book a Table**: Visit the **Reservations** page, pick a date and party size, and confirm to see the automatic `reservations.json` download.
+4. **Send an Inquiry**: Fill out the **Contact** page to test input validation and download `contacts.json`.
+5. **Meet the Team**: Browse the **Our Team** page to preview contributor profiles.
 
 ---
 
-## 🚀 Future Roadmap: 3rd Evaluation Scope
+## 👥 Project Contributors
 
-The foundation built in this 2nd evaluation phase will seamlessly connect to the upcoming 3rd evaluation milestones:
-
-1. **Node.js & Express Setup**: Transition from client-side `localStorage` to an Express HTTP server.
-2. **RESTful Express APIs**: `POST /api/reservations` and `POST /api/contacts` to write form payloads directly into server-side JSON files using Node's `fs` module.
-3. **External API Integrations**: Live weather/events data or currency conversion for international guests.
-4. **MongoDB & Mongoose CRUD**: Full database schema modelling and CRUD management for menu delicacies, guest bookings, and contact inquiries.
-
----
-
-## 👥 Project Team
-
-| Contributor | Project Role & Focus Areas |
+| Contributor | Focus Areas |
 | :--- | :--- |
-| **Shreya Chaudhary** | Project Lead, Repository Coordination, Styling & Interlinking |
-| **Ashish Agrawal** | Menu Interactivity, Live Filtering & Search Architecture |
+| **Shreya Chaudhary** | Project Lead, Repository Architecture, Styling & Interlinking |
+| **Ashish Agrawal** | Menu Interactivity, Live Filtering & Search Engine |
 | **Vivek Yadav** | Form Engineering, Validation & Local JSON Storage Engine |
-| **Khush Raghav** | UI/UX Prototyping, Component Aesthetics & Team Presentation |
+| **Khush Raghav** | UI/UX Prototyping, Component Aesthetics & Visual Assets |
 
 ---
 
 <div align="center">
 
-Crafted with Precision &amp; Heritage • **The Saffron Plate Pure Vegetarian Kitchen**  
-*B.Tech Computer Science &amp; Engineering — Semester 3 Web Development Assessment*
+Crafted with Precision &amp; Heritage • **The Saffron Plate Pure Vegetarian Kitchen**
 
 </div>
