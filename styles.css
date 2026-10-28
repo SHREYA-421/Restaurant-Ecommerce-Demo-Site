@@ -542,6 +542,50 @@ footer {
   animation: shakeError 0.35s ease-in-out;
 }
 
+/* Local JSON Actions & Counter */
+.json-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border);
+}
+
+.export-json-btn {
+  width: 100%;
+  background: rgba(201, 162, 39, 0.08);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.export-json-btn:hover {
+  background: var(--gold);
+  color: #171717;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(201, 162, 39, 0.25);
+}
+
+.saved-count {
+  font-size: 11px;
+  color: var(--body-text);
+  letter-spacing: 0.05em;
+}
+
 .card-selected {
   border-color: var(--gold) !important;
   animation: cardPulse 0.3s ease;

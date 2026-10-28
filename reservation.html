@@ -28,6 +28,7 @@
       </a>
       <div class="nav-menu-list right">
         <a href="about.html">About Us</a>
+        <a href="team.html">Our Team</a>
         <a href="contact.html">Contact</a>
         <a href="auth.html" class="nav-auth-btn">Sign In / Register</a>
       </div>
@@ -76,7 +77,13 @@
           </select>
         </div>
 
-        <button type="button" class="res-btn">CONFIRM RESERVATION</button>
+        <button type="submit" class="res-btn">CONFIRM RESERVATION</button>
+
+        <!-- Local JSON File Actions -->
+        <div class="json-actions">
+          <button type="button" id="export-res-json" class="export-json-btn">📥 Download All Saved Reservations (.JSON)</button>
+          <span id="res-count" class="saved-count">Saved in local storage: 0 reservations</span>
+        </div>
 
       </form>
     </div>
